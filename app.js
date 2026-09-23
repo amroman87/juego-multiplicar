@@ -135,7 +135,7 @@ function generateQuestions(selectedTables, totalQuestions) {
 
   while (questions.length < totalQuestions) {
     const firstFactor = getRandomItemFromSet(selectedTables);
-    const secondFactor = randomNumber(1, 12);
+    const secondFactor = randomNumber(1, 10);
     const multiplicationKey = `${firstFactor}x${secondFactor}`;
 
     if (!usedMultiplications.has(multiplicationKey)) {
