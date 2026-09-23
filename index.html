@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego de Multiplicaciones</title>
+    <meta
+      name="description"
+      content="Juego educativo para practicar tablas de multiplicar con preguntas aleatorias, feedback inmediato y resumen final."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <p class="eyebrow">Aprende jugando</p>
+        <h1>Juego de Multiplicaciones</h1>
+      </header>
+
+      <main>
+        <section id="setup-screen" class="screen active" aria-labelledby="setup-title">
+          <div class="panel">
+            <h2 id="setup-title">Selecciona las tablas</h2>
+            <p class="intro-text">
+              Elige una o varias tablas para practicar. Cada partida incluye 10 preguntas aleatorias.
+            </p>
+
+            <div id="table-grid" class="table-grid" aria-label="Selector de tablas"></div>
+
+            <div class="setup-actions">
+              <button id="select-all-btn" type="button" class="secondary-btn">
+                Seleccionar todas
+              </button>
+              <button id="clear-btn" type="button" class="secondary-btn ghost-btn">
+                Limpiar selección
+              </button>
+            </div>
+
+            <button id="start-game-btn" type="button" class="primary-btn" disabled>
+              Empezar
+            </button>
+          </div>
+        </section>
+
+        <section id="game-screen" class="screen" aria-labelledby="game-title">
+          <div class="panel game-panel">
+            <div class="game-header">
+              <p id="question-counter" class="question-counter">Pregunta 1 de 10</p>
+              <div class="score-badges" aria-live="polite">
+                <span id="score-label">Aciertos: 0</span>
+                <span id="mistakes-label">Errores: 0</span>
+              </div>
+            </div>
+
+            <div class="progress-wrap" aria-label="Progreso de la partida">
+              <div id="progress-bar" class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <p class="label">Resuelve</p>
+              <h2 id="question-text" class="question-text">7 × 8 = ?</h2>
+
+              <form id="answer-form" novalidate>
+                <label for="answer-input" class="visually-hidden">Escribe la respuesta</label>
+                <input
+                  id="answer-input"
+                  name="answer"
+                  type="number"
+                  inputmode="numeric"
+                  step="1"
+                  min="0"
+                  aria-label="Respuesta numérica"
+                  autocomplete="off"
+                />
+                <button id="check-btn" type="submit" class="primary-btn">Comprobar</button>
+              </form>
+
+              <button id="next-btn" type="button" class="secondary-btn" hidden>
+                Siguiente
+              </button>
+
+              <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="results-screen" class="screen" aria-labelledby="results-title">
+          <div class="panel results-panel">
+            <p class="eyebrow">Resultado final</p>
+            <h2 id="results-title" class="result-title">¡Muy bien! 🎉</h2>
+
+            <div class="results-stats" aria-live="polite">
+              <div class="stat-card">
+                <span>Aciertos</span>
+                <strong id="result-correct">0</strong>
+              </div>
+              <div class="stat-card">
+                <span>Errores</span>
+                <strong id="result-errors">0</strong>
+              </div>
+              <div class="stat-card">
+                <span>Porcentaje</span>
+                <strong id="result-percent">0%</strong>
+              </div>
+            </div>
+
+            <div class="summary-box">
+              <h3>Resumen de la partida</h3>
+              <div class="summary-table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Pregunta</th>
+                      <th>Tu respuesta</th>
+                      <th>Respuesta correcta</th>
+                      <th>Resultado</th>
+                    </tr>
+                  </thead>
+                  <tbody id="summary-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <button id="restart-btn" type="button" class="primary-btn">Jugar de nuevo</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
